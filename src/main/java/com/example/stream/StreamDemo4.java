@@ -10,12 +10,12 @@ import java.util.stream.Stream;
 public class StreamDemo4 {
     public static void main(String[] args) {
         String str = "my name is 007";
-        
+
         //使用并行流打印，是乱序的
-        str.chars().parallel().forEach(i -> System.out.print((char)i));
+        str.chars().parallel().forEach(i -> System.out.print((char) i));
         System.out.println();
         //使用forEachOrdered，进行并行流打印时，能够保证顺序
-        str.chars().parallel().forEachOrdered(i -> System.out.print((char)i));
+        str.chars().parallel().forEachOrdered(i -> System.out.print((char) i));
 
         //收集到list
         List<String> list = Stream.of(str.split(" ")).collect(Collectors.toList());
@@ -30,7 +30,7 @@ public class StreamDemo4 {
         System.out.println(reduce);
 
         //计算所有单词总长度
-        Integer length = Stream.of(str.split(" ")).map(s -> s.length()).reduce(0, (s1, s2) -> s1+s2);
+        Integer length = Stream.of(str.split(" ")).map(s -> s.length()).reduce(0, (s1, s2) -> s1 + s2);
         System.out.println(length);
 
         //max的使用
